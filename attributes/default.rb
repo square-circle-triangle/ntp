@@ -20,28 +20,28 @@
 #
 
 # default attributes for all platforms
-default[:ntp][:is_server] = false
-default[:ntp][:servers]   = ["0.pool.ntp.org", "1.pool.ntp.org"]
-default[:ntp][:driftfile] = "/var/lib/ntp/ntp.drift"
-default[:ntp][:statsdir] = "/var/log/ntpstats/"
+default['ntp']['is_server'] = false
+default['ntp']['servers']   = ["0.pool.ntp.org", "1.pool.ntp.org"]
+default['ntp']['driftfile'] = "/var/lib/ntp/ntp.drift"
+default['ntp']['statsdir'] = "/var/log/ntpstats/"
 
 # overrides on a platform-by-platform basis
 case platform
 when "ubuntu","debian"
-  default[:ntp][:service] = "ntp"
-  default[:ntp][:root_group] = "root"
+  default['ntp']['service'] = "ntp"
+  default['ntp']['root_group'] = "root"
 when "redhat","centos","fedora","scientific"
-  default[:ntp][:service] = "ntpd"
-  default[:ntp][:root_group] = "root"
+  default['ntp']['service'] = "ntpd"
+  default['ntp']['root_group'] = "root"
 when "freebsd"
-  default[:ntp][:service] = "ntpd"
-  default[:ntp][:root_group] = "wheel"
-  default[:ntp][:driftfile] = "/var/db/ntpd.drift"
-  default[:ntp][:statsdir] = "/var/db/ntpstats/"
+  default['ntp']['service'] = "ntpd"
+  default['ntp']['root_group'] = "wheel"
+  default['ntp']['driftfile'] = "/var/db/ntpd.drift"
+  default['ntp']['statsdir'] = "/var/db/ntpstats/"
 else
-  default[:ntp][:service] = "ntpd"
-  default[:ntp][:root_group] = "root"
+  default['ntp']['service'] = "ntpd"
+  default['ntp']['root_group'] = "root"
 end
 
-default[:ntp][:peers] = []
-default[:ntp][:restrictions] = []
+default['ntp']['peers'] = []
+default['ntp']['restrictions'] = []

@@ -11,33 +11,33 @@ Should work on any Red Hat-family or Debian-family Linux distribution or on Free
 Attributes
 ==========
 
-* ntp[:is_server]
+* ntp['is_server']
 
   - Boolean, should be true or false, defaults to false
 
-* ntp[:servers] (applies to NTP Servers and Clients)
+* ntp['servers'] (applies to NTP Servers and Clients)
 
   - Array, should be a list of upstream NTP public servers.  The NTP protocol
     works best with at least 3 servers.  The NTPD maximum is 7 upstream
     servers, any more than that and some of them will be ignored by the daemon.
 
-* ntp[:peers] (applies to NTP Servers ONLY)
+* ntp['peers'] (applies to NTP Servers ONLY)
 
   - Array, should be a list of local NTP private servers.  Configuring peer
     servers on your LAN will reduce traffic to upstream time sources, and
     provide higher availability of NTP on your LAN.  Again the maximum is 7
     peers
 
-* ntp[:restrictions] (applies to NTP Servers only)
+* ntp['restrictions'] (applies to NTP Servers only)
 
   - Array, should be a list of restrict lines to restrict access to NTP
     clients on your LAN.
 
-* ntp[:driftfile]
+* ntp['driftfile']
 
   - String, the path to the frequency file.
 
-* ntp[:statsdir]
+* ntp['statsdir']
 
   - String, the directory path for files created by the statistics facility.
 

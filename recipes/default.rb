@@ -19,7 +19,7 @@
 
 root_group = node['ntp']['root_group']
 
-case node[:platform]
+case node['platform']
 when "ubuntu","debian"
   package "ntpdate" do
     action :install
@@ -36,9 +36,9 @@ when "redhat","centos","fedora","scientific"
   end unless node[:platform_version].to_i < 6
 end
 
-case node[:platform]
+case node['platform']
 when "freebsd"
-  directory node[:ntp][:statsdir] do
+  directory node['ntp']['statsdir'] do
     owner "root"
     group root_group
     mode "0755"
@@ -46,14 +46,14 @@ when "freebsd"
 when "redhat","centos","fedora","scientific"
   # ntpstats dir doesn't exist on RHEL/CentOS
 else
-  directory node[:ntp][:statsdir] do
+  directory node['ntp']['statsdir'] do
     owner "ntp"
     group "ntp"
     mode "0755"
   end
 end
 
-service node[:ntp][:service] do
+service node['ntp']['service'] do
   supports :status => true, :restart => true
   action [ :enable, :start ]
 end
@@ -63,5 +63,5 @@ template "/etc/ntp.conf" do
   owner "root"
   group root_group
   mode "0644"
-  notifies :restart, resources(:service => node[:ntp][:service])
+  notifies :restart, resources(:service => node['ntp']['service'])
 end
