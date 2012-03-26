@@ -30,7 +30,7 @@ case platform
 when "ubuntu","debian"
   default['ntp']['service'] = "ntp"
   default['ntp']['root_group'] = "root"
-when "redhat","centos","fedora","scientific"
+when "redhat","centos","fedora","scientific","amazon"
   default['ntp']['service'] = "ntpd"
   default['ntp']['root_group'] = "root"
 when "freebsd"

@@ -26,7 +26,7 @@ when "ubuntu","debian"
       action :install
     end
   end
-when "redhat","centos","fedora","scientific"
+when "redhat","centos","fedora","scientific","amazon"
   package "ntp" do
     action :install
   end
@@ -42,7 +42,7 @@ when "freebsd"
     group root_group
     mode "0755"
   end
-when "redhat","centos","fedora","scientific"
+when "redhat","centos","fedora","scientific","amazon"
   # ntpstats dir doesn't exist on RHEL/CentOS
 else
   directory node['ntp']['statsdir'] do
