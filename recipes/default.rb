@@ -21,11 +21,10 @@ root_group = node['ntp']['root_group']
 
 case node['platform']
 when "ubuntu","debian"
-  package "ntpdate" do
-    action :install
-  end
-  package "ntp" do
-    action :install
+  %w{ntpdate ntp}.each do |ntp_pkg|
+    package ntp_pkg do
+      action :install
+    end
   end
 when "redhat","centos","fedora","scientific"
   package "ntp" do
