@@ -41,7 +41,7 @@ when "redhat","centos","fedora","scientific","amazon","oracle"
   default['ntp']['service'] = "ntpd"
   default['ntp']['packages'] = %w{ ntp }
   if node['platform_version'].to_i >= 6
-    default['ntp']['packages'] = %w{ ntp ntpdate } 
+    default['ntp']['packages'] = %w{ ntp ntpdate }
   end
 when "freebsd"
   default['ntp']['service'] = "ntpd"
@@ -49,6 +49,7 @@ when "freebsd"
   default['ntp']['driftfile'] = "#{node['ntp']['varlibdir']}/ntpd.drift"
   default['ntp']['statsdir'] = "#{node['ntp']['varlibdir']}/ntpstats"
   default['ntp']['packages'] = %w{ ntp }
+  default['ntp']['var_owner'] = "root"
   default['ntp']['conf_group'] = "wheel"
-  default['ntp']['var_group'] = "wheel" 
+  default['ntp']['var_group'] = "wheel"
 end
